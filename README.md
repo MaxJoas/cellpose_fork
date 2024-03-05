@@ -24,11 +24,15 @@ Please see install instructions [below](README.md/#Installation), and also check
 
 ### :star2: v3 (Feb 2024) :star2:
 
-Cellpose3 enables image restoration in the GUI and the API (CLI support and example notebooks coming soon!) To learn more...
-* Check out the paper [thread](https://neuromatch.social/@computingnature/111932247922392030).
+Cellpose3 enables image restoration in the GUI, API and CLI (saved to `_seg.npy`). To learn more...
 * Check out the [paper](https://www.biorxiv.org/content/10.1101/2024.02.10.579780v1).
+* API documentation [here](https://cellpose.readthedocs.io/en/latest/restore.html)
+* Example google colab notebook for image restoration: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/MouseLand/cellpose/blob/main/notebooks/run_cellpose3.ipynb), using new `CellposeDenoiseModel`.
+* Example google colab notebook with new super-generalist "cyto3" model: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/MouseLand/cellpose/blob/main/notebooks/run_cyto3.ipynb). Try out the new `cyto3` super-generalist Cellpose model with `model_type="cyto3"`.
 
-Try out the new `cyto3` super-generalist Cellpose model with `model_type="cyto3"`. There are some Cellpose API changes from v2.0 which will be documented soon.
+denoising             |  deblurring                  |  upsampling
+:-------------------------:|:-------------------------:|:-------------------------:
+<img src="http://www.cellpose.org/static/images/poisson_cp3.gif?raw=True" width="350" title="cellpose denoising" alt="cellpose denoising examples"> | <img src="http://www.cellpose.org/static/images/blur_cp3.gif?raw=True" width="350" title="cellpose deblurring" alt="cellpose deblurring examples"> | <img src="http://www.cellpose.org/static/images/downsample_cp3.gif?raw=True" width="350" title="cellpose upsampling" alt="cellpose upsampling examples">
 
 ### CITATION
 
@@ -174,6 +178,12 @@ python -m cellpose
 The first time cellpose runs it downloads the latest available trained model weights from the website.
 
 You can now **drag and drop** any images (*.tif, *.png, *.jpg, *.gif) into the GUI and run Cellpose, and/or manually segment them. When the GUI is processing, you will see the progress bar fill up and during this time you cannot click on anything in the GUI. For more information about what the GUI is doing you can look at the terminal/prompt you opened the GUI with. For example data, see [website](http://www.cellpose.org) or this google drive [folder](https://drive.google.com/open?id=18syVlaix8cIlrnNF20pEWKMWUsKx9R9z). For best accuracy and runtime performance, resize images so cells are less than 100 pixels across. 
+
+For 3D data, with multi-Z, please use the 3D version of the GUI with:
+~~~~
+python -m cellpose --Zstack
+~~~~
+
 
 ## Step-by-step demo
 
