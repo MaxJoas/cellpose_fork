@@ -48,22 +48,26 @@ except:
 io_logger = logging.getLogger(__name__)
 
 
-def logger_setup():
-    cp_dir = pathlib.Path.home().joinpath(".cellpose")
+def logger_setup(cp_path=".cellpose", logfile_name="run.log"):
+    cp_dir = pathlib.Path.home().joinpath(cp_path)
     cp_dir.mkdir(exist_ok=True)
-    log_file = cp_dir.joinpath("run.log")
+    log_file = cp_dir.joinpath(logfile_name)
     try:
         log_file.unlink()
     except:
-        print("creating new log file")
+        print('creating new log file')
     logging.basicConfig(
-        level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s",
-        handlers=[logging.FileHandler(log_file),
-                  logging.StreamHandler(sys.stdout)])
+                    level=logging.INFO,
+                    format="%(asctime)s [%(levelname)s] %(message)s",
+                    handlers=[
+                        logging.FileHandler(log_file),
+                        logging.StreamHandler(sys.stdout)
+                    ]
+                )
     logger = logging.getLogger(__name__)
-    logger.info(f"WRITING LOG OUTPUT TO {log_file}")
+    logger.info(f'WRITING LOG OUTPUT TO {log_file}')
     logger.info(version_str)
-    #logger.handlers[1].stream = sys.stdout
+    logger.handlers[1].stream = sys.stdout
 
     return logger, log_file
 
