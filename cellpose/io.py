@@ -67,7 +67,6 @@ def logger_setup(cp_path=".cellpose", logfile_name="run.log"):
     logger = logging.getLogger(__name__)
     logger.info(f'WRITING LOG OUTPUT TO {log_file}')
     logger.info(version_str)
-    logger.handlers[1].stream = sys.stdout
 
     return logger, log_file
 
